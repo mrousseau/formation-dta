@@ -291,7 +291,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="livio-pizzeria-project" />
+      <module name="mathieu-pizzeria-project" />
       <envs />
       <method />
     </configuration>
@@ -448,8 +448,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/livio-pizzeria-parent/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/livio-pizzeria-parent/livio-pizzeria-console/src/main/java/fr/pizzeria/action/Create.java" />
+    <entry file="file://$PROJECT_DIR$/mathieu-pizzeria-parent/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/mathieu-pizzeria-parent/mathieu-pizzeria-console/src/main/java/fr/pizzeria/action/Create.java" />
     <entry file="file://$PROJECT_DIR$/mathieu-pizzeria-parent/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
