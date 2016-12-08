@@ -15,10 +15,8 @@ public class List extends MenuInterface {
 
 	@Override
 	public void executeAction() {
-		this.ihmUtil.getPizzaDao().findAll().forEach(System.out::println);
-
-		System.out.println(
-				"------------------ " + Pizza.getNbPizzas() + " pizzas crées depuis le lancement du programme");
+		this.ihmUtil.getPizzaDao().findAll().forEach(p -> System.out.println( p.getCode() + " --> " + p.getNom() + " (" + p.getPrix() + "€)" ));
+		System.out.println("------------------ " + Pizza.getNbPizzas() + " nombre de pizza contenu dans le catalogue.");
 	}
 
 	@Override

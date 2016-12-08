@@ -15,7 +15,7 @@ public class Delete extends MenuInterface {
 	@Override
 	public void executeAction() {
 
-		this.ihmUtil.getPizzaDao().findAll().forEach(System.out::println);
+		this.ihmUtil.getPizzaDao().findAll().forEach(p -> System.out.println( "[" + p.getId() + "] -- "+ p.getCode() + " --> " + p.getNom() + " (" + p.getPrix() + "€)" ));
 
 		System.out.println("Veuillez choisir la pizza Ã  supprimer\n");
 		int choix;

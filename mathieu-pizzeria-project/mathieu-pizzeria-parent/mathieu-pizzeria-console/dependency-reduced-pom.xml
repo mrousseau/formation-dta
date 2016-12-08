@@ -59,6 +59,12 @@
         <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryTableau</factoryValue.mode>
       </properties>
     </profile>
+    <profile>
+      <id>bdd</id>
+      <properties>
+        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
+      </properties>
+    </profile>
   </profiles>
   <dependencies>
     <dependency>

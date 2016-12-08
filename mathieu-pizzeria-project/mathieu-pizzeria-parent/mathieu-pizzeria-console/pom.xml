@@ -70,28 +70,22 @@
 	<profiles>
 		<profile>
 			<id>fichier</id>
-			<activation>
-				<file>
-					<exists>application.properties</exists>
-				</file>
-				<activeByDefault>false</activeByDefault>
-			</activation>
 			<properties>
 				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryFichier</factoryValue.mode>
 			</properties>
 		</profile>
 		<profile>
 			<id>tableau</id>
-			<activation>
-				<file>
-					<exists>application.properties</exists>
-				</file>
-			</activation>
 			<properties>
 				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryTableau</factoryValue.mode>
 			</properties>
 		</profile>
-
+		<profile>
+			<id>bdd</id>
+			<properties>
+				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
+			</properties>
+		</profile>
 	</profiles>
 
 </project>
