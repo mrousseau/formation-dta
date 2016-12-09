@@ -3,6 +3,7 @@ package fr.pizzeria.console;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //import org.apache.log4j.Logger;
 
@@ -19,7 +20,7 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 
-//		Logger logger = Logger.getLogger(PizzeriaAdminConsoleApp.class);
+		Logger logger = Logger.getLogger(PizzeriaAdminConsoleApp.class.getName());
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		Pizza p1 = new Pizza();
 		p1.setCode("MAR");
@@ -38,6 +39,8 @@ public class PizzeriaAdminConsoleApp {
 		} catch (InstantiationException e) {
 //			logger.debug("Erreur d'instanciation");
 //			logger.error(e.getMessage());
+			logger.log(Level.WARNING, "Erreur" + e.getMessage(), e) ;
+			
 		} catch (IllegalAccessException e) {
 //			logger.debug("Accès illégal");
 //			logger.error(e.getMessage());
