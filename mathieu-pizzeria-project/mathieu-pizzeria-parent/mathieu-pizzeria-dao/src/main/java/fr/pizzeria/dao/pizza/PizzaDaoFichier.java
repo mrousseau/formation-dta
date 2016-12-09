@@ -17,7 +17,8 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoFichier implements PizzaDao {
 	Path pathRep = FileSystems.getDefault().getPath(
-			"C:/Users/ETY10/Documents/Formation_2016/git/Formation_DTA/pizzeria-objet-console-factory/fichierDao/");
+			"C:/Users/ETY8/Documents/workspace/formation-dta/mathieu-pizzeria-project/mathieu-pizzeria-parent/mathieu-pizzeria-model/data");
+//			"C:/Users/ETY10/Documents/Formation_2016/git/Formation_DTA/pizzeria-objet-console-factory/fichierDao/");
 
 //	Logger logger = Logger.getLogger(PizzaDaoFichier.class);
 

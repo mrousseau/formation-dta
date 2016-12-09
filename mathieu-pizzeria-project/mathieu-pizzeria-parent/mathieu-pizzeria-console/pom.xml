@@ -84,7 +84,11 @@
 			<id>bdd</id>
 			<properties>
 				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
-			</properties>
+                <database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
+                <database.url>jdbc:mysql://localhost:3306/pizzadb?useSSL=false</database.url>
+                <database.user>root</database.user>
+                <database.password></database.password>
+            </properties>
 		</profile>
 	</profiles>
 

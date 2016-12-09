@@ -19,8 +19,9 @@ public class Delete extends MenuInterface {
 
 		System.out.println("Veuillez choisir la pizza à supprimer\n");
 		int choix;
-		choix = this.ihmUtil.getScanner().nextInt() - 1;
-		this.ihmUtil.getPizzaDao().deletePizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId());
+		choix = this.ihmUtil.getScanner().nextInt();
+		this.ihmUtil.getPizzaDao().deletePizza(choix);
+//				
 	}
 
 	@Override

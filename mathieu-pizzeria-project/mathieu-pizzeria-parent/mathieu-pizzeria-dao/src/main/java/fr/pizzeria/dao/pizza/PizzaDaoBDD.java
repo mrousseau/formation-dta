@@ -8,15 +8,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoBDD implements PizzaDao {
 
-	private String url = "jdbc:mysql://localhost:3306/pizzadb?useSSL=false";
-	private String user = "root";
-	private String password = "";
+	ResourceBundle bundle = ResourceBundle.getBundle("application");
+	
 	private Connection connection; 
 	Statement statement;
 	
@@ -63,7 +63,7 @@ public class PizzaDaoBDD implements PizzaDao {
 	private ResultSet readBDD(String action){
 		ResultSet resultats = null;
 						try {
-							connection =  DriverManager.getConnection(url,user,password);
+							connection =  DriverManager.getConnection(bundle.getString("url.impl"),bundle.getString("user.impl"),bundle.getString("pwd.impl"));
 							statement = connection.createStatement();
 							resultats = statement.executeQuery(action);
 						} catch (SQLException e) {
@@ -77,10 +77,10 @@ public class PizzaDaoBDD implements PizzaDao {
 	private int writeBDD(String action){
 		int status = -1;
 		try {
-			connection =  DriverManager.getConnection(url,user,password);
+			connection =  DriverManager.getConnection(bundle.getString("url.impl"),bundle.getString("user.impl"),bundle.getString("pwd.impl"));
 			statement = connection.createStatement();
-			System.out.println(action);
 			status = statement.executeUpdate(action);
+			System.out.println(action);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

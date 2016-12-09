@@ -62,7 +62,10 @@
     <profile>
       <id>bdd</id>
       <properties>
+        <database.user>root</database.user>
         <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
+        <database.url>jdbc:mysql://localhost:3306/pizzadb?useSSL=false</database.url>
+        <database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
       </properties>
     </profile>
   </profiles>

@@ -11,50 +11,49 @@ public class Update extends MenuInterface {
 	public Update(IhmUtil ihmUtil) {
 		super();
 		this.setIhmUtil(ihmUtil);
-		this.setLibelle("Mettre à jour une pizza");
+		this.setLibelle("Mettre Ã  jour une pizza");
 	}
 
-	@Override
-	public void executeAction() {
-		this.ihmUtil.getPizzaDao().findAll().forEach(p -> System.out.println( "[" + p.getId() + "] -- "+ p.getCode() + " --> " + p.getNom() + " (" + p.getPrix() + "�)" ));
 
-		System.out.println("Veuillez choisir la pizza à modifier\n");
 
-		int choix;
-		choix = this.ihmUtil.getScanner().nextInt() - 1;
+@Override
+    public void executeAction()  {
+        this.ihmUtil.getPizzaDao().findAll().forEach(p -> System.out.println( "[" + p.getId() + "] --" + p.getCode() + " --> " + p.getNom() + " (" + p.getPrix() + "€)" ));
 
-		String codePizza;
-		System.out.println("Veuillez saisir le nouveau code \n");
-		codePizza = ihmUtil.getScanner().next();
+        System.out.println("Veuillez choisir la pizza à modifier\n");
 
-		String nomPizza;
-		System.out.println("Veuillez saisir le nouveau nom(sans espace) \n");
-		nomPizza = ihmUtil.getScanner().next();
+        int choix;
+        choix = this.ihmUtil.getScanner().nextInt();
 
-		Double prixPizza;
-		System.out.println("Veuillez saisir le nouveau prix");
-		prixPizza = ihmUtil.getScanner().nextDouble();
+        String codePizza;
+        System.out.println("Veuillez saisir le nouveau code \n");
+        codePizza = ihmUtil.getScanner().next();
 
-		int categorie;
-		System.out.println("Veuillez choisir la ca�gorie de votre pizza");
-		System.out.println("1 -> Viande \n2 -> Sans Viande \n3 -> Poisson");
-		categorie = ihmUtil.getScanner().nextInt();
+        String nomPizza;
+        System.out.println("Veuillez saisir le nouveau nom(sans espace) \n");
+        nomPizza = ihmUtil.getScanner().next();
 
-		if (categorie == 1) {
-			this.ihmUtil.getPizzaDao().updatePizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(),
-					new Pizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(), codePizza, nomPizza, prixPizza,
-							CategoriePizza.VIANDE));
-		} else if (categorie == 2) {
-			this.ihmUtil.getPizzaDao().updatePizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(),
-					new Pizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(), codePizza, nomPizza, prixPizza,
-							CategoriePizza.SANS_VIANDE));
-		} else {
-			this.ihmUtil.getPizzaDao().updatePizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(),
-					new Pizza(this.ihmUtil.getPizzaDao().findAll().get(choix).getId(), codePizza, nomPizza, prixPizza,
-							CategoriePizza.POISSON));
-		}
+        Double prixPizza;
+        System.out.println("Veuillez saisir le nouveau prix");
+        prixPizza = ihmUtil.getScanner().nextDouble();
 
-	}
+        int categorie;
+        System.out.println("Veuillez choisir la ca�gorie de votre pizza");
+        System.out.println("1 -> Viande \n2 -> Sans Viande \n3 -> Poisson");
+        categorie = ihmUtil.getScanner().nextInt();
+
+        if (categorie == 1) {
+            this.ihmUtil.getPizzaDao().updatePizza(choix,
+                    new Pizza(choix, codePizza, nomPizza, prixPizza, CategoriePizza.VIANDE));
+        } else if (categorie == 2) {
+            this.ihmUtil.getPizzaDao().updatePizza(choix,
+                    new Pizza(choix, codePizza, nomPizza, prixPizza, CategoriePizza.SANS_VIANDE));
+        } else {
+            this.ihmUtil.getPizzaDao().updatePizza(choix,
+                    new Pizza(choix, codePizza, nomPizza, prixPizza, CategoriePizza.POISSON));
+        }
+
+    }
 
 	@Override
 	public void show() {
