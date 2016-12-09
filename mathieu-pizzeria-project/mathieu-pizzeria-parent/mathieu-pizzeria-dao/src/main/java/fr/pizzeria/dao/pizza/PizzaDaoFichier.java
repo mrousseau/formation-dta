@@ -9,6 +9,10 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import fr.pizzeria.console.PizzeriaAdminConsoleApp;
 
 //import org.apache.log4j.Logger;
 
@@ -18,10 +22,9 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoFichier implements PizzaDao {
 	Path pathRep = FileSystems.getDefault().getPath(
 			"C:/Users/ETY8/Documents/workspace/formation-dta/mathieu-pizzeria-project/mathieu-pizzeria-parent/mathieu-pizzeria-model/data");
-//			"C:/Users/ETY10/Documents/Formation_2016/git/Formation_DTA/pizzeria-objet-console-factory/fichierDao/");
 
-//	Logger logger = Logger.getLogger(PizzaDaoFichier.class);
-
+	
+	Logger logger = Logger.getLogger(PizzaDaoFichier.class.getName());
 	@Override
 	public List<Pizza> findAll() {
 		Pizza.setNbPizzas(0);
@@ -39,14 +42,13 @@ public class PizzaDaoFichier implements PizzaDao {
 							CategoriePizza.valueOf(parts[3])));
 
 				} catch (IOException e) {
-//					logger.debug("IOEXCEPTION");
-//					logger.error(e.getMessage());
+
+					logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 				}
 			});
 			directoryStream.close();
 		} catch (IOException e) {
-//			logger.debug("IOEXCEPTION");
-//			logger.error(e.getMessage());
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		}
 		return pizzas;
 	}
@@ -61,22 +63,18 @@ public class PizzaDaoFichier implements PizzaDao {
 			lines.add(p.getCode() + "," + p.getNom() + "," + p.getPrix() + "," + p.getCategoriePizza());
 			Files.write(pathFichier, lines, charset, StandardOpenOption.APPEND);
 		} catch (IOException e) {
-//			logger.debug("IOEXCEPTION");
-//			logger.error(e.getMessage());
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		}
 	}
 
 	@Override
 	public void updatePizza(int id, Pizza p) {
 		findAll().get(id).getCode();
-//		logger.info(code);
 	}
 
 	@Override
 	public void deletePizza(int id) {
 		findAll().get(id).getCode();
-//		logger.info(code);
-
 	}
 
 }
