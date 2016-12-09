@@ -28,7 +28,7 @@ public class PizzeriaAdminConsoleApp {
 		Pizza p2 = new Pizza();
 		p2.setCode("MAR");
 
-//		logger.info("p1=p2 ? " + p1.equals(p2));
+
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String daoImpl = bundle.getString("dao.impl");
@@ -37,16 +37,12 @@ public class PizzeriaAdminConsoleApp {
 		try {
 			daoFactory = (PizzaDaoFactory) Class.forName(daoImpl).newInstance();
 		} catch (InstantiationException e) {
-//			logger.debug("Erreur d'instanciation");
-//			logger.error(e.getMessage());
-			logger.log(Level.WARNING, "Erreur" + e.getMessage(), e) ;
-			
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
+		
 		} catch (IllegalAccessException e) {
-//			logger.debug("Accès illégal");
-//			logger.error(e.getMessage());
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		} catch (ClassNotFoundException e) {
-//			logger.debug("Class Not Found");
-//			logger.error(e.getMessage());
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		}
 
 		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory);

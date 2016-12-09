@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -15,7 +17,7 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoBDD implements PizzaDao {
 
 	ResourceBundle bundle = ResourceBundle.getBundle("application");
-	
+	Logger logger = Logger.getLogger(PizzaDaoBDD.class.getName());
 	private Connection connection; 
 	Statement statement;
 	
@@ -35,7 +37,7 @@ public class PizzaDaoBDD implements PizzaDao {
 				Pizza.setNbPizzas(+1);
 				}	
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		}
 		
 		return newListPizza;
@@ -65,7 +67,7 @@ public class PizzaDaoBDD implements PizzaDao {
 							statement = connection.createStatement();
 							resultats = statement.executeQuery(action);
 						} catch (SQLException e) {
-							e.printStackTrace();
+							logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 						}
 
 		
@@ -80,6 +82,7 @@ public class PizzaDaoBDD implements PizzaDao {
 			status = statement.executeUpdate(action);
 			System.out.println(action);
 		} catch (Exception e) {
+			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
 		}
 		System.out.println(status);
 		return status;
