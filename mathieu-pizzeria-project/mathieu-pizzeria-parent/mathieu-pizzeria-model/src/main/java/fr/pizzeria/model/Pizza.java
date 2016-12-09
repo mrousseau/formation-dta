@@ -1,17 +1,35 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import fr.pizzeria.enumeration.CategoriePizza;
 
+@Entity
 public class Pizza {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	private String code;
+
 	private String nom;
+
 	private Double prix;
+	@Transient
 	private static int nbPizzas;
+	
+	@Enumerated(EnumType.STRING)
 	private CategoriePizza categoriePizza;
 
 	public CategoriePizza getCategoriePizza() {

@@ -2,6 +2,7 @@ package fr.pizzeria.console;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 //import org.apache.log4j.Logger;
 
@@ -19,7 +20,7 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args) {
 
 //		Logger logger = Logger.getLogger(PizzeriaAdminConsoleApp.class);
-
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		Pizza p1 = new Pizza();
 		p1.setCode("MAR");
 

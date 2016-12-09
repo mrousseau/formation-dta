@@ -1,6 +1,5 @@
 package fr.pizzeria.dao.pizza;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,15 +27,14 @@ public class PizzaDaoBDD implements PizzaDao {
 		try {
 			while(result.next()) {		
 				Pizza p = new Pizza(result.getInt("id"), 
-									result.getString("codePizza"),
+									result.getString("code"),
 									result.getString("nom"), 
 									Double.parseDouble(result.getBigDecimal("prix").toString()),
-									CategoriePizza.valueOf(result.getString("categorie")));
+									CategoriePizza.valueOf(result.getString("categoriePizza")));
 				newListPizza.add(p);
 				Pizza.setNbPizzas(+1);
 				}	
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
 		
@@ -45,12 +43,12 @@ public class PizzaDaoBDD implements PizzaDao {
 
 	@Override
 	public void save(Pizza p) {
-		writeBDD("INSERT INTO pizza(codepizza,nom,prix,categorie) VALUES ('"  + p.getCode() + "','" + p.getNom() +  "','" + p.getPrix() + "','" + p.getCategoriePizza()+"');"); 
+		writeBDD("INSERT INTO pizza(code,nom,prix,categoriePizza) VALUES ('"  + p.getCode() + "','" + p.getNom() +  "','" + p.getPrix() + "','" + p.getCategoriePizza()+"');"); 
 		}
 
 	@Override
 	public void updatePizza(int id, Pizza p) {
-		writeBDD("UPDATE pizza SET codepizza='"+ p.getCode() +"',nom='"+ p.getNom()+"',prix='"+ p.getPrix()+"',categorie='"+ p.getCategoriePizza()+"' WHERE id="+ id+ ";");
+		writeBDD("UPDATE pizza SET code='"+ p.getCode() +"',nom='"+ p.getNom()+"',prix='"+ p.getPrix()+"',categoriePizza='"+ p.getCategoriePizza()+"' WHERE id="+ id+ ";");
 	}
 
 	@Override
@@ -82,7 +80,6 @@ public class PizzaDaoBDD implements PizzaDao {
 			status = statement.executeUpdate(action);
 			System.out.println(action);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		System.out.println(status);
 		return status;

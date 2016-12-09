@@ -68,13 +68,13 @@ public class PizzaDaoFichier implements PizzaDao {
 
 	@Override
 	public void updatePizza(int id, Pizza p) {
-		String code = findAll().get(id).getCode();
+		findAll().get(id).getCode();
 //		logger.info(code);
 	}
 
 	@Override
 	public void deletePizza(int id) {
-		String code = findAll().get(id).getCode();
+		findAll().get(id).getCode();
 //		logger.info(code);
 
 	}

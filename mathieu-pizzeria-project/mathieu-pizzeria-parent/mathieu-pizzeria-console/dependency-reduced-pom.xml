@@ -68,6 +68,12 @@
         <database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
       </properties>
     </profile>
+    <profile>
+      <id>jpa</id>
+      <properties>
+        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryJPA</factoryValue.mode>
+      </properties>
+    </profile>
   </profiles>
   <dependencies>
     <dependency>
