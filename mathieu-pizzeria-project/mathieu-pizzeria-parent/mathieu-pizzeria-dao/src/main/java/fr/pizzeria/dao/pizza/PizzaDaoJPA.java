@@ -1,5 +1,6 @@
 package fr.pizzeria.dao.pizza;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import com.mysql.jdbc.Connection;
 
 import fr.pizzeria.model.Pizza;
 
@@ -16,9 +19,8 @@ public class PizzaDaoJPA implements PizzaDao{
 	private EntityManager em;
 	
 	public PizzaDaoJPA() {
-		
-
 	}
+
 	
 	@Override                                                                            
 	public List<Pizza> findAll() {
@@ -42,7 +44,6 @@ public class PizzaDaoJPA implements PizzaDao{
 	public void updatePizza(int id, Pizza p) {
 		init();
 		Pizza piz = em.find(Pizza.class, id);
-	  
 		em.getTransaction().begin();
 		piz.setCode(p.getCode());
 		piz.setNom(p.getNom());
