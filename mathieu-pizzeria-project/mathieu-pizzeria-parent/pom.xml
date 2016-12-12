@@ -12,6 +12,7 @@
 		<module>mathieu-pizzeria-model</module>
 		<module>mathieu-pizzeria-dao</module>
 		<module>mathieu-pizzeria-console</module>
+		<module>mathieu-pizzeria-console-client</module>
 	</modules>
 
 	<build>

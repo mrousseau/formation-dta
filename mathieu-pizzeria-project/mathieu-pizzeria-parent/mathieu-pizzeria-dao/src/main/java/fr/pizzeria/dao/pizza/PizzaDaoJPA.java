@@ -1,17 +1,12 @@
 package fr.pizzeria.dao.pizza;
 
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.mysql.jdbc.Connection;
-
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.*;
 
 
 public class PizzaDaoJPA implements PizzaDao{
@@ -19,6 +14,7 @@ public class PizzaDaoJPA implements PizzaDao{
 	private EntityManager em;
 	
 	public PizzaDaoJPA() {
+		emf = Persistence.createEntityManagerFactory("manager1");
 	}
 
 	
@@ -48,9 +44,10 @@ public class PizzaDaoJPA implements PizzaDao{
 		piz.setCode(p.getCode());
 		piz.setNom(p.getNom());
 		piz.setPrix(p.getPrix());
+		piz.setCategoriePizza(p.getCategoriePizza());
 		em.getTransaction().commit();
 		close();
-		
+		 
 	}
 
 	@Override
@@ -64,12 +61,10 @@ public class PizzaDaoJPA implements PizzaDao{
 	}
 
 	private void init(){
-		emf = Persistence.createEntityManagerFactory("manager1");
 		em = emf.createEntityManager();
 	}
 	
 	private void close(){
 		em.close();
-		emf.close();
 	}
 }

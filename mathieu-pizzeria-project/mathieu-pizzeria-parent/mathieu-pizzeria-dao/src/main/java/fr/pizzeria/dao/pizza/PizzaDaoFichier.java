@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -25,7 +24,7 @@ public class PizzaDaoFichier implements PizzaDao {
 	public List<Pizza> findAll() {
 		Pizza.setNbPizzas(0);
 		List<Pizza> pizzas = new ArrayList<Pizza>();
-		try {
+ 		try {
 			DirectoryStream<Path> directoryStream = Files.newDirectoryStream(pathRep);
 			Charset charset = Charset.forName("UTF-8");
 			directoryStream.forEach(directory -> {
