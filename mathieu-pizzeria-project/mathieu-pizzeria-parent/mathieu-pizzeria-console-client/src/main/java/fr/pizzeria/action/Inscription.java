@@ -24,7 +24,7 @@ public class Inscription extends MenuInterface {
 	
 	@Override
 	public void executeAction() {
-		// TODO Auto-generated method stub
+		System.out.println("lancement de la fonction d'inscription...");
 		
 	}
 

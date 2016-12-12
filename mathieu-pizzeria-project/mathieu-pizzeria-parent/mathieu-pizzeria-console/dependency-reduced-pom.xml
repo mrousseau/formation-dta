@@ -9,12 +9,6 @@
   <artifactId>mathieu-pizzeria-console</artifactId>
   <name>mathieu-pizzeria-console</name>
   <build>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
     <finalName>pizzeria</finalName>
     <pluginManagement>
       <plugins>
@@ -46,35 +40,6 @@
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>fichier</id>
-      <properties>
-        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryFichier</factoryValue.mode>
-      </properties>
-    </profile>
-    <profile>
-      <id>tableau</id>
-      <properties>
-        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryTableau</factoryValue.mode>
-      </properties>
-    </profile>
-    <profile>
-      <id>bdd</id>
-      <properties>
-        <database.user>root</database.user>
-        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
-        <database.url>jdbc:mysql://localhost:3306/pizzadb?useSSL=false</database.url>
-        <database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
-      </properties>
-    </profile>
-    <profile>
-      <id>jpa</id>
-      <properties>
-        <factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryJPA</factoryValue.mode>
-      </properties>
-    </profile>
-  </profiles>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

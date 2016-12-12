@@ -44,12 +44,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
 	</build>
 
 	<dependencies>
@@ -74,36 +68,4 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 	</dependencies>
-
-	<profiles>
-		<profile>
-			<id>fichier</id>
-			<properties>
-				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryFichier</factoryValue.mode>
-			</properties>
-		</profile>
-		<profile>
-			<id>tableau</id>
-			<properties>
-				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryTableau</factoryValue.mode>
-			</properties>
-		</profile>
-		<profile>
-			<id>bdd</id>
-			<properties>
-				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryBDD</factoryValue.mode>
-				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
-				<database.url>jdbc:mysql://localhost:3306/pizzadb?useSSL=false</database.url>
-				<database.user>root</database.user>
-				<database.password></database.password>
-			</properties>
-		</profile>
-		<profile>
-			<id>jpa</id>
-			<properties>
-				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryJPA</factoryValue.mode>
-			</properties>
-		</profile>
-	</profiles>
-
 </project>
