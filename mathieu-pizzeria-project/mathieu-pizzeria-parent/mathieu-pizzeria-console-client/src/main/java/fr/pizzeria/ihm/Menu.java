@@ -14,13 +14,8 @@ public class Menu {
 	IhmUtil reader;
 
 	public Menu(IhmUtil ihmUtil) {
-//		listeOutils.put(0, new List(ihmUtil));
 		listeOutils.put(0, new Inscription(ihmUtil));
-//		listeOutils.put(2, new ListCher(ihmUtil));
-//		listeOutils.put(3, new Create(ihmUtil));
-//		listeOutils.put(4, new Update(ihmUtil));
-//		listeOutils.put(5, new Delete(ihmUtil));
-//		listeOutils.put(6, new Exit(ihmUtil));
+
 		this.reader = ihmUtil;
 	}
 
