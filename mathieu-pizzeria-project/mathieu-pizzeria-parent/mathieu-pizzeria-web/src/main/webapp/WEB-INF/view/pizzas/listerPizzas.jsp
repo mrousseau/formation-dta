@@ -16,40 +16,40 @@
 	href="<%=request.getContextPath()%>/dist/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="<%=request.getContextPath()%>dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/dist/app.css">
 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/dist/app.css">
 </head>
 <body class="container-fuild">
-<div>
+	<div class="table_pizza">
+		<h1>Liste de pizzas</h1>
+		<div class="row">
+			<div class="col-lg-offset-2 col-md-8">
+				<div class="col-md-2">Id.</div>
+				<div class="col-md-2">Code</div>
+				<div class="col-md-2">Nom</div>
+				<div class="col-md-2">Prix</div>
+				<div class="col-md-4">Image</div>
+				<%
+					ArrayList<Pizza> alPizzas = (ArrayList<Pizza>) request.getAttribute("listePizzas");
+				%>
+				<!--<p><%=alPizzas.stream().count()%></p>-->
 
-</div>
-	<h1>Liste de pizzas :</h1>
+				<%
+					for (Pizza item : alPizzas) {
+				%>
+				<div class="col-md-2"><%=item.getId()%></div>
+				<div class="col-md-2"><%=item.getCode()%></div>
+				<div class="col-md-2"><%=item.getNom()%></div>
+				<div class="col-md-2"><%=item.getPrix()%></div>
+				<div class="col-md-4">
+					<p>Image</p>
+				</div>
 
-	<div class="row">
-		<div class="col-lg-offset-2 col-md-8">
-			<div class="col-md-2">Id.</div>
-			<div class="col-md-2">Code</div>
-			<div class="col-md-2">Nom</div>
-			<div class="col-md-2">Prix</div>
-			<div class="col-md-4">Image</div>
-			<%
-				ArrayList<Pizza> alPizzas = (ArrayList<Pizza>) request.getAttribute("listePizzas");
-			%>
-			<!--<p><%= alPizzas.stream().count() %></p>-->
-			
-			<%
-				for(Pizza item : alPizzas){ 
-			%>
-			<div class="col-md-2"><%= item.getId() %></div>
-			<div class="col-md-2"><%= item.getCode() %></div>
-			<div class="col-md-2"><%= item.getNom() %></div>
-			<div class="col-md-2"><%= item.getPrix() %></div>
-			<div class="col-md-4"><p>Image</p></div>
- 
-			<%
-				};
-			%>
+				<%
+					}
+					;
+				%>
+			</div>
 		</div>
 	</div>
 </body>
