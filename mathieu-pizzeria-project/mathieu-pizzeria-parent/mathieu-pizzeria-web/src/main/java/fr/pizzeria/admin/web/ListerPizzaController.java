@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Pizza;
@@ -33,9 +37,12 @@ public class ListerPizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		Logger logger = Logger.getLogger(ListerPizzaController.class.getName());
+		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/view/pizzas/listerPizzas.jsp");
 		PizzaDao pizzaDao = new PizzaDaoJPA();
 		List<Pizza> o = pizzaDao.findAll();
+		logger.log(Level.WARNING, "taille du tableau : " + o.size(), "");
 		request.setAttribute("listePizzas", o);
 		dispatcher.forward(request, response);
 	}

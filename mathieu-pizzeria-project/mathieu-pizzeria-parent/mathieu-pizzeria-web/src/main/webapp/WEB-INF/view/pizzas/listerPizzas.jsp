@@ -24,26 +24,30 @@
 	<h1>Liste de pizzas :</h1>
 
 	<div class="row">
-		<div class="offset-lg-2 col-md-8">
+		<div class="col-lg-offset-2 col-md-8">
 			<p class="col-md-2">Id.</p>
 			<p class="col-md-2">Code</p>
 			<p class="col-md-2">Nom</p>
 			<p class="col-md-2">Prix</p>
-			<div class="col-md-8">Image</div>
+			<div class="col-md-4">Image</div>
 			<%
 				ArrayList<Pizza> alPizzas = (ArrayList<Pizza>) request.getAttribute("listePizza");
-				for (Pizza p : alPizzas) {
 			%>
-			<p class="col-md-2"><% p.getId(); %></p>
-			<p class="col-md-2"><% p.getCode(); %></p>
-			<p class="col-md-2"><% p.getNom(); %></p>
-			<p class="col-md-2"><% p.getPrix(); %></p>
-			<div class="col-md-8">Image</div>
-
+			<p><%= alPizzas.stream().count() %></p>
+			
+<%-- 			
 			<%
-				}
-				;
+				for(Pizza item : alPizzas){ 
 			%>
+			<p class="col-md-2"><%= item.getId() %></p>
+			<p class="col-md-2"><%= item.getCode() %></p>
+			<p class="col-md-2"><%= item.getNom() %></p>
+			<p class="col-md-2"><%= item.getPrix() %></p>
+			<div class="col-md-8"><p>Image</p></div>
+ 
+			<%
+				};
+			%> --%>
 		</div>
 	</div>
 </body>

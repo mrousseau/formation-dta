@@ -1,5 +1,9 @@
 package fr.pizzeria.dao.client;
 
-public class ClientDao {
+public interface ClientDao {
 
+	boolean seConnecter();
+	boolean seDeconnecter();
+	
+	
 }
