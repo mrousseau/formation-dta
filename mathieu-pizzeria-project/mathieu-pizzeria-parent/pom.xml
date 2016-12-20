@@ -13,6 +13,7 @@
 		<module>mathieu-pizzeria-dao</module>
 		<module>mathieu-pizzeria-console</module>
 		<module>mathieu-pizzeria-console-client</module>
+		<module>mathieu-pizzeria-web</module>
 	</modules>
 
 	<build>
@@ -48,8 +49,6 @@
 				<artifactId>commons-lang3</artifactId>
 				<version>3.5</version>
 			</dependency>
-			<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
-				<version>5.1.40</version> </dependency> -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>mathieu-pizzeria-dao</artifactId>
@@ -74,6 +73,11 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
 				<version>5.1.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
