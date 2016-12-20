@@ -9,45 +9,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/dist/css/bootstrap.min.css">
-
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/dist/css/bootstrap-theme.min.css">
-
 <!-- Latest compiled and minified JavaScript -->
 <script src="<%=request.getContextPath()%>dist/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/dist/app.css">
 </head>
 <body class="container-fuild">
+<div>
+
+</div>
 	<h1>Liste de pizzas :</h1>
 
 	<div class="row">
 		<div class="col-lg-offset-2 col-md-8">
-			<p class="col-md-2">Id.</p>
-			<p class="col-md-2">Code</p>
-			<p class="col-md-2">Nom</p>
-			<p class="col-md-2">Prix</p>
+			<div class="col-md-2">Id.</div>
+			<div class="col-md-2">Code</div>
+			<div class="col-md-2">Nom</div>
+			<div class="col-md-2">Prix</div>
 			<div class="col-md-4">Image</div>
 			<%
-				ArrayList<Pizza> alPizzas = (ArrayList<Pizza>) request.getAttribute("listePizza");
+				ArrayList<Pizza> alPizzas = (ArrayList<Pizza>) request.getAttribute("listePizzas");
 			%>
-			<p><%= alPizzas.stream().count() %></p>
+			<!--<p><%= alPizzas.stream().count() %></p>-->
 			
-<%-- 			
 			<%
 				for(Pizza item : alPizzas){ 
 			%>
-			<p class="col-md-2"><%= item.getId() %></p>
-			<p class="col-md-2"><%= item.getCode() %></p>
-			<p class="col-md-2"><%= item.getNom() %></p>
-			<p class="col-md-2"><%= item.getPrix() %></p>
-			<div class="col-md-8"><p>Image</p></div>
+			<div class="col-md-2"><%= item.getId() %></div>
+			<div class="col-md-2"><%= item.getCode() %></div>
+			<div class="col-md-2"><%= item.getNom() %></div>
+			<div class="col-md-2"><%= item.getPrix() %></div>
+			<div class="col-md-4"><p>Image</p></div>
  
 			<%
 				};
-			%> --%>
+			%>
 		</div>
 	</div>
 </body>
