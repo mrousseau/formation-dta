@@ -31,11 +31,17 @@
 	<div class="row formulaire_modi_pizza">
 		<form method="post">
 			<div class="form-group ">
-				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Code</label><input class="col-md-6" type="text" name="nom" placeholder="Code de la pizza" value="<%=p.getCode()%>" /></div> 
+				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Code</label><input class="col-md-6" type="text" name="id" placeholder="ID de la pizza" value="<%=p.getId()%>" /></div>
+				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Code</label><input class="col-md-6" type="text" name="code" placeholder="Code de la pizza" value="<%=p.getCode()%>" /></div> 
 				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Nom</label><input class="col-md-6" type="text" name="nom" placeholder="Nom de la pizza" value="<%=p.getNom()%>" /></div> 
-				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Prix</label><input class="col-md-6" type="text" name="nom" placeholder="Prix de la pizza" value="<%=p.getPrix()%>" /></div>
+				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Prix</label><input class="col-md-6" type="text" name="prix" placeholder="Prix de la pizza" value="<%=p.getPrix()%>" /></div>
+				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">Categorie</label><input class="col-md-6" type="text" name="categorie" placeholder="Prix de la pizza" value="<%=p.getCategoriePizza().getValue()%>" /></div>
+				<div class="col-md-12" ><label class="col-md-offset-2 col-md-2">url</label><input class="col-md-6" type="text" name="url" placeholder="Image de la pizza" value="<%=p.getUrl()%>" /></div>
+				<div class="col-md-12">
+					<img src="<%=p.getUrl()%>" class="col-md-offset-4 col-md-4"/>
+				</div>
 			</div>
-			<a href="#" type=submit class="btn btn-success col-md-offset-2 col-md-8 toUP" >Valider</a>
+			<button type=submit class="btn btn-success col-md-offset-2 col-md-8 toUP" >Valider</button>
 		</form>
 	</div>
 </body>

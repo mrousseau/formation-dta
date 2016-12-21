@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -58,7 +59,17 @@ public class EditerPizzaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		PizzaDao pizzaDao = new PizzaDaoJPA();
+		
+		Pizza piz = new Pizza(Integer.parseInt((String) request.getParameter("id")),
+				(String) request.getParameter("code"), 
+				(String) request.getParameter("nom"), 
+				Double.parseDouble((String) request.getParameter("prix")) , 
+				CategoriePizza.valueOf((String) request.getParameter("categorie")), 
+				(String) request.getParameter("url"));
+		
+		pizzaDao.updatePizza(Integer.parseInt(request.getParameter("id")), piz);
+		response.sendRedirect(request.getContextPath() +"/pizzas/list");
 	}
 
 }

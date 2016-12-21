@@ -3,6 +3,8 @@
 body{
 	background-image:url(http://www.lorrainepizza-luneville.com/img/pizzeria-moncel.jpg);
 	/*http://www.lorrainepizza-luneville.com/img/pizzeria-moncel.jpg*/
+	background-repeat:no-repeat;
+	background-size: cover;   
 }
 
 header{
@@ -43,8 +45,7 @@ header h1{
 .container_list_pizza h2 {
 	color: #FF0000;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	font-weight: 900; 
-	
+	font-weight: 900; 	
 }
 
 .toUP{
@@ -53,5 +54,16 @@ header h1{
 }
 
 .formulaire_modi_pizza{
+	background-color: rgba(242, 242, 242, 0.6);
+}
+
+.form-group img{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.auth{
+	margin-top: 300px;
+	height: 300px;
+	padding-top: 50px;
 	background-color: rgba(242, 242, 242, 0.6);
 }

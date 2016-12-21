@@ -128,7 +128,7 @@ public class Pizza {
 		nbPizzas += 1;
 	}
 	
-		public Pizza(String code, String nom, double prix, CategoriePizza categoriePizza, String url) {
+		public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza, String url) {
 		super();
 		this.id = nbPizzas;
 		this.code = code;
