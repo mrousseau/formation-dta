@@ -1,9 +1,57 @@
 /* @CHARSET "ISO-8859-1"; */
 
 body{
+	background-image:url(http://www.lorrainepizza-luneville.com/img/pizzeria-moncel.jpg);
+	/*http://www.lorrainepizza-luneville.com/img/pizzeria-moncel.jpg*/
+}
+
+header{
+	text-align: center; 
+	margin-bottom: 50px; 
+}
+
+header h1{
+	color: #FF0000; 
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-size: 50px;
+	font-weight: 900;  
+}
+
+
+.tableau_pizza{
+	margin-top: 5px;
+	text-align: center;
+
+}
+
+.tableau_pizza tbody tr td{
+	vertical-align: middle;
+}
+
+.tableau_pizza thead {
+	background: #FF8000;
+} 
+
+.tableau_pizza tbody tr:nth-child(even) {
+	background: #F2F2F2;
+} 
+
+.tableau_pizza tbody tr:nth-child(odd) {
+	background: #A4A4A4;
+} 
+
+.container_list_pizza h2 {
+	color: #FF0000;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-weight: 900; 
 	
 }
 
-.table_pizza{
-	text-align: center; 
+.toUP{
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.formulaire_modi_pizza{
+	background-color: rgba(242, 242, 242, 0.6);
 }

@@ -30,6 +30,16 @@ public class Pizza {
 	
 	@Enumerated(EnumType.STRING)
 	private CategoriePizza categoriePizza;
+	
+	private String url; 
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public CategoriePizza getCategoriePizza() {
 		return categoriePizza;
@@ -116,6 +126,17 @@ public class Pizza {
 		this.prix = prix;
 		this.categoriePizza = categoriePizza;
 		nbPizzas += 1;
+	}
+	
+		public Pizza(String code, String nom, double prix, CategoriePizza categoriePizza, String url) {
+		super();
+		this.id = nbPizzas;
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categoriePizza = categoriePizza;
+		nbPizzas += 1;
+		this.url = url ; 
 	}
 
 	public Pizza() {
