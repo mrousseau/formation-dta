@@ -7,6 +7,10 @@ body{
 	background-size: cover;   
 }
 
+.bg_white{
+		background-color: rgba(242, 242, 242, 0.6);
+}
+
 header{
 	text-align: center; 
 	margin-bottom: 50px; 

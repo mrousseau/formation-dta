@@ -33,6 +33,16 @@ public class Pizza {
 	
 	private String url; 
 
+	private boolean archive;
+	
+	public boolean isArchive() {
+		return archive;
+	}
+
+	public void setArchive(boolean archive) {
+		this.archive = archive;
+	}
+
 	public String getUrl() {
 		return url;
 	}
@@ -127,6 +137,18 @@ public class Pizza {
 		this.categoriePizza = categoriePizza;
 		nbPizzas += 1;
 	}
+	
+	public Pizza(String code, String nom, double prix, CategoriePizza categoriePizza, String url) {
+	super();
+	this.id = nbPizzas;
+	this.code = code;
+	this.nom = nom;
+	this.prix = prix;
+	this.categoriePizza = categoriePizza;
+	nbPizzas += 1;
+	this.url = url ;
+	this.setArchive(false);
+}
 	
 		public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza, String url) {
 		super();

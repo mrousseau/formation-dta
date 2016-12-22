@@ -1,12 +1,6 @@
 package fr.pizzeria.admin.web;
 
-import java.awt.List;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,29 +15,26 @@ import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class EditerPizzaController
+ * Servlet implementation class CreatePizza
  */
-@WebServlet("/pizzas/edit")
-public class EditerPizzaController extends HttpServlet {
+@WebServlet("/pizzas/create")
+public class CreatePizza extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditerPizzaController() {
+    public CreatePizza() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PizzaDao pizzaDao = new PizzaDaoJPA();
-		ArrayList<Pizza> o = (ArrayList<Pizza>) pizzaDao.findAll();
-		Pizza piz = (o.stream().filter(p -> p.getId()==Integer.parseInt(request.getParameter("pizzasID"))).findFirst()).get();
-		request.setAttribute("pizza", piz);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/view/pizzas/editerPizza.jsp");
-		dispatcher.forward(request, response);	
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/view/pizzas/create.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -52,15 +43,13 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PizzaDao pizzaDao = new PizzaDaoJPA();
-		
-		Pizza piz = new Pizza(Integer.parseInt((String) request.getParameter("id")),
-				(String) request.getParameter("code"), 
+//		Pizza(String code, String nom, double prix, CategoriePizza categoriePizza, String url)
+
+		pizzaDao.save(new Pizza(request.getParameter("code"), 
 				(String) request.getParameter("nom"), 
 				Double.parseDouble((String) request.getParameter("prix")) , 
 				CategoriePizza.valueOf((String) request.getParameter("categorie")), 
-				(String) request.getParameter("url"));
-		
-		pizzaDao.updatePizza(Integer.parseInt(request.getParameter("id")), piz);
+				(String) request.getParameter("url")));
 		response.sendRedirect(request.getContextPath() +"/pizzas/list");
 	}
 

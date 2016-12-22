@@ -54,9 +54,14 @@ public class PizzaDaoJPA implements PizzaDao{
 	public void deletePizza(int id) {
 		init();
 		Pizza piz = em.find(Pizza.class, id);
+//		TODO Attendre validation avant suppression
+//		em.getTransaction().begin();
+//		em.remove(piz);
+//		em.getTransaction().commit();
 		em.getTransaction().begin();
-		em.remove(piz);
+		piz.setArchive(true);
 		em.getTransaction().commit();
+		
 		close();
 	}
 

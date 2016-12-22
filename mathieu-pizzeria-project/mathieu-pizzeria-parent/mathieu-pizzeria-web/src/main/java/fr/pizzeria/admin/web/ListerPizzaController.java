@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
@@ -42,9 +42,22 @@ public class ListerPizzaController extends HttpServlet {
 //		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/view/pizzas/listerPizzas.jsp");
 		PizzaDao pizzaDao = new PizzaDaoJPA();
-		List<Pizza> o = pizzaDao.findAll();
+		List<Pizza> o = null; 
+		
+		
+			
+		if(request.getParameter("All")!=null && Boolean.parseBoolean(request.getParameter("All").toString())==true){
+			o = pizzaDao.findAll();
+			request.setAttribute("link", "/pizzas/list");
+			request.setAttribute("btnList", "Retour");
+		}else{
+			o = pizzaDao.findAll().stream().filter(p -> p.isArchive()==false).collect(Collectors.toList());
+			request.setAttribute("link", "/pizzas/list?All=true");
+			request.setAttribute("btnList", "Tout afficher");
+		}
 		
 		request.setAttribute("listePizzas", o);
+		
 		dispatcher.forward(request, response);
 	}
 
