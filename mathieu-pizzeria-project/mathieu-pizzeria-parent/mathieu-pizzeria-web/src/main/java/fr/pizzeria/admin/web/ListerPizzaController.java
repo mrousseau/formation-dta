@@ -3,6 +3,7 @@ package fr.pizzeria.admin.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import fr.pizzeria.admin.service.PizzaService;
+import fr.pizzeria.admin.service.PizzaServiceEJB;
 import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Pizza;
@@ -27,8 +29,9 @@ import fr.pizzeria.model.Pizza;
 public class ListerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private PizzaService pizzaService;
+//	@Inject
+//	private PizzaService pizzaService;
+	@EJB private PizzaServiceEJB pizzaEJB;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -73,24 +76,43 @@ public class ListerPizzaController extends HttpServlet {
 		// dispatcher.forward(request, response);
 		
 		//AVEC CDI et les injections
+//		RequestDispatcher dispatcher = this.getServletContext()
+//				.getRequestDispatcher("/WEB-INF/view/pizzas/listerPizzas.jsp");
+//		List<Pizza> o = null;
+//		if (request.getParameter("All") != null
+//				&& Boolean.parseBoolean(request.getParameter("All").toString()) == true) {
+//			o = pizzaService.findAll();
+//			request.setAttribute("link", "/pizzas/list");
+//			request.setAttribute("btnList", "Retour");
+//		} else {
+//			o = pizzaService.findAll().stream().filter(p -> p.isArchive() == false).collect(Collectors.toList());
+//			request.setAttribute("link", "/pizzas/list?All=true");
+//			request.setAttribute("btnList", "Tout afficher");
+//		}
+//
+//		request.setAttribute("listePizzas", o);
+//
+//		dispatcher.forward(request, response);
+		
+		
+//		EJB JTA
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/view/pizzas/listerPizzas.jsp");
-		List<Pizza> o = null;
-		if (request.getParameter("All") != null
-				&& Boolean.parseBoolean(request.getParameter("All").toString()) == true) {
-			o = pizzaService.findAll();
-			request.setAttribute("link", "/pizzas/list");
-			request.setAttribute("btnList", "Retour");
-		} else {
-			o = pizzaService.findAll().stream().filter(p -> p.isArchive() == false).collect(Collectors.toList());
-			request.setAttribute("link", "/pizzas/list?All=true");
-			request.setAttribute("btnList", "Tout afficher");
-		}
+		.getRequestDispatcher("/WEB-INF/view/pizzas/listerPizzas.jsp");
+List<Pizza> o = null;
+if (request.getParameter("All") != null
+		&& Boolean.parseBoolean(request.getParameter("All").toString()) == true) {
+	o = pizzaEJB.findAll();
+	request.setAttribute("link", "/pizzas/list");
+	request.setAttribute("btnList", "Retour");
+} else {
+	o = pizzaEJB.findAll().stream().filter(p -> p.isArchive() == false).collect(Collectors.toList());
+	request.setAttribute("link", "/pizzas/list?All=true");
+	request.setAttribute("btnList", "Tout afficher");
+}
 
-		request.setAttribute("listePizzas", o);
+request.setAttribute("listePizzas", o);
 
-		dispatcher.forward(request, response);
-
+dispatcher.forward(request, response);
 	}
 
 	/**
