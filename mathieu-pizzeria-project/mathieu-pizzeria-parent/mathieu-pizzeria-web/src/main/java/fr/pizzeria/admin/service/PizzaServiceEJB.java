@@ -1,5 +1,6 @@
 package fr.pizzeria.admin.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -8,8 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.enumeration.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -19,7 +19,7 @@ import fr.pizzeria.model.Pizza;
 @LocalBean
 public class PizzaServiceEJB {
 
-	@PersistenceContext(unitName="pizza-db") private EntityManager em;
+	@PersistenceContext private EntityManager em;
     /**
      * Default constructor. 
      */
@@ -31,8 +31,28 @@ public class PizzaServiceEJB {
     public List<Pizza> findAll(){
 				TypedQuery<Pizza> rqt = em.createQuery("select p from Pizza p", Pizza.class);
 				List<Pizza> l = rqt.getResultList();
-				em.close();
     		return l; 
+    }
+    
+    
+    public void save(Pizza p ){
+    	em.persist(p);
+    }
+    
+    public void updatePizza(Pizza p){
+    	Pizza piz = em.find(Pizza.class, p.getId());
+    	piz.setCode(p.getCode());
+    	piz.setNom(p.getNom());
+    	piz.setPrix(p.getPrix());
+    	piz.setUrl(p.getUrl());
+    	piz.setCategoriePizza(p.getCategoriePizza());
+    	piz.setArchive(p.isArchive());
+    	em.getTransaction().commit();
+    }
+    
+    public void deletePizza(Pizza p){
+		p.setArchive(true);
+		em.getTransaction().commit();
     }
 
 }

@@ -31,8 +31,11 @@ public class ListerPizzaController extends HttpServlet {
 
 //	@Inject
 //	private PizzaService pizzaService;
-	@EJB private PizzaServiceEJB pizzaEJB;
+//	@EJB private PizzaServiceEJB pizzaEJB;
 
+	@Inject
+	private PizzaService pizzaService;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -101,11 +104,11 @@ public class ListerPizzaController extends HttpServlet {
 List<Pizza> o = null;
 if (request.getParameter("All") != null
 		&& Boolean.parseBoolean(request.getParameter("All").toString()) == true) {
-	o = pizzaEJB.findAll();
+	o = pizzaService.findAll();
 	request.setAttribute("link", "/pizzas/list");
 	request.setAttribute("btnList", "Retour");
 } else {
-	o = pizzaEJB.findAll().stream().filter(p -> p.isArchive() == false).collect(Collectors.toList());
+	o = pizzaService.findAll().stream().filter(p -> p.isArchive() == false).collect(Collectors.toList());
 	request.setAttribute("link", "/pizzas/list?All=true");
 	request.setAttribute("btnList", "Tout afficher");
 }

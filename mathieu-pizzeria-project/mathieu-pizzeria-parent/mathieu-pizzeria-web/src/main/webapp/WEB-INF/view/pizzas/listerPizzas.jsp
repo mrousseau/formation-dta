@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/dist/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
-<script src="<%=request.getContextPath()%>dist/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/app.css">
 
 </head>
