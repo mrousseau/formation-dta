@@ -47,12 +47,13 @@ public class PizzaServiceEJB {
     	piz.setUrl(p.getUrl());
     	piz.setCategoriePizza(p.getCategoriePizza());
     	piz.setArchive(p.isArchive());
-    	em.getTransaction().commit();
+//    	em.getTransaction().commit();
     }
     
     public void deletePizza(Pizza p){
-		p.setArchive(true);
-		em.getTransaction().commit();
+    	Pizza piz = em.find(Pizza.class, p.getId());
+    	piz.setArchive(true);
+//		em.getTransaction().commit();
     }
 
 }

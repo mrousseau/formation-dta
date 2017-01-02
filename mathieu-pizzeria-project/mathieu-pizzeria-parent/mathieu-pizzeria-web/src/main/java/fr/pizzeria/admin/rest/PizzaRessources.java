@@ -43,10 +43,6 @@ public class PizzaRessources {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void insert(Pizza p){
-		//TODO rajouter la fonction save dans EJB
-		Logger logger = Logger.getLogger(PizzaRessources.class.getName());
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		logger.log(Level.WARNING, "Ajout de : " + p.getNom() + " " + p.getCode()) ;
 		ejbPizzaService.save(p);
 	}
 	
@@ -54,20 +50,12 @@ public class PizzaRessources {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void update(Pizza p){
-		//TODO rajouter la fonction update dans EJB
-		Logger logger = Logger.getLogger(PizzaRessources.class.getName());
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		logger.log(Level.WARNING, "Modification de : "+ p.getNom() + " " + p.getCode()) ;
 		ejbPizzaService.updatePizza(p);
 	}
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void delete(Pizza p){
-		//TODO rajouter la fonction delete  dans EJB
-		Logger logger = Logger.getLogger(PizzaRessources.class.getName());
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		logger.log(Level.WARNING, "Suppression de : "+ p.getNom() + " " + p.getCode()) ;
 		ejbPizzaService.deletePizza(p);
 	}
 	
