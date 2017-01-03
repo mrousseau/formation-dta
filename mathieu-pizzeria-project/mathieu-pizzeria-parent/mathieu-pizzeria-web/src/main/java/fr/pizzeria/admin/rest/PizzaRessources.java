@@ -25,19 +25,14 @@ import fr.pizzeria.model.Pizza;
 @Path("/pizzas")
 public class PizzaRessources {
 
-	@PersistenceContext private EntityManager em;
+//	@PersistenceContext private EntityManager em;
 	
 	@EJB private PizzaServiceEJB ejbPizzaService;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Pizza> list() {
-//		TypedQuery<Pizza> rqt = em.createQuery("select p from Pizza p", Pizza.class);
-//		List<Pizza> pizzas = rqt.getResultList();
-		
-		
-	return ejbPizzaService.findAll();
-
+		return ejbPizzaService.findAll();
 	}
 	
 	@POST
