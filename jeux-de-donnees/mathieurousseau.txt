@@ -1,5 +1,0 @@
-QUESTION 29  Which three are bad practices?  A. Checking for ArrayindexoutofBoundsException when iterating through an array to determine when all elements have been visited   B. Checking for Error and. If necessary, restarting the program to ensure that users are unaware problems   C. Checking for FileNotFoundException to inform a user that a filename entered is not valid   D. Checking for ArrayIndexoutofBoundsExcepcion and ensuring that the program can recover if one occur   E. Checking for an IOException and ensuring that the program can recover if one occurs   
- 
- QUESTION 32  Given:	public static void main (String [] args) {  int a, b, c = 0;  int a, b, c;  int g, int h, int i = 0; i nt d, e, F;  int k, l, m; = 0;  } 
-	
-Which three declarations will compile?  A. int a, b, c = 0;   B. int a, b, c;   C. int g, int h, int i = 0;   D. int d, e, F;   E. int k, l, m; = 0;    

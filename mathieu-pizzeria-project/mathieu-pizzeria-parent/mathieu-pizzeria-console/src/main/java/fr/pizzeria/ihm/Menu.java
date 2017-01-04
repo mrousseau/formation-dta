@@ -3,6 +3,9 @@ package fr.pizzeria.ihm;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.action.Create;
 import fr.pizzeria.action.Delete;
 import fr.pizzeria.action.Exit;
@@ -12,10 +15,11 @@ import fr.pizzeria.action.ListCher;
 import fr.pizzeria.action.MenuInterface;
 import fr.pizzeria.action.Update;
 
+@Component
 public class Menu {
 
 	Map<Integer, MenuInterface> listeOutils = new HashMap<Integer, MenuInterface>();
-
+	@Autowired
 	IhmUtil reader;
 
 	public Menu(IhmUtil ihmUtil) {
