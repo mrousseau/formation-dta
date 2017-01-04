@@ -15,7 +15,8 @@ public class IhmUtil {
 	private Scanner scanner;
 	@Autowired
 	private PizzaDao pizzaDao;
-
+	
+//	@Autowired
 //	public IhmUtil(Scanner scanner, PizzaDaoFactory pizzaFactory) {
 //		super();
 //		this.scanner = scanner;
