@@ -5,12 +5,8 @@ import java.util.Scanner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
 import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.service.PizzaFactoryBDD;
 import fr.pizzeria.dao.service.PizzaFactoryJPA;
-import fr.pizzeria.ihm.IhmUtil;
-import fr.pizzeria.ihm.Menu;
 
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
