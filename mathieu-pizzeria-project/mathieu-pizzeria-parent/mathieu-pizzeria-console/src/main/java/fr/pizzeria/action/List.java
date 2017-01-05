@@ -1,10 +1,15 @@
 package fr.pizzeria.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.ihm.IhmUtil;
 import fr.pizzeria.model.Pizza;
 
+@Controller
 public class List extends MenuInterface {
 
+	@Autowired
 	private IhmUtil ihmUtil;
 
 	public List(IhmUtil ihmUtil) {

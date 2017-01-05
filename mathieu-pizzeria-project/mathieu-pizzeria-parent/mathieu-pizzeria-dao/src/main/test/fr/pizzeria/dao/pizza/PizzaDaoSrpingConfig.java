@@ -1,6 +1,4 @@
-package fr.pizzeria.console;
-
-import java.util.Scanner;
+package fr.pizzeria.dao.pizza;
 
 import javax.sql.DataSource;
 
@@ -12,24 +10,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-/*
- * Produit un bean de configuration
- * puis definit le répertoire qu'il doit scanner 
- * */
 @Configuration
-@ComponentScan("fr.pizzeria")
-public class PizzeriaAppSpringConfig {
+@ComponentScan("fr.pizzeria.dao")
+public class PizzaDaoSrpingConfig {
 	
 	
-	/*@Bean
-	public PizzaDao pizzaDao() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String daoImpl = bundle.getString("dao.impl");
-		System.out.println(daoImpl);
-		PizzaDaoFactory pizzaDao = (PizzaDaoFactory) Class.forName(daoImpl).newInstance();
-		return pizzaDao.getPizzaDaoFactory();
-	}*/
-
 //	@Bean
 //	public DataSource getDataSrouce(){
 //		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -40,7 +25,6 @@ public class PizzeriaAppSpringConfig {
 //		return dataSource; 
 //	}
 //	
-	
 	@Bean 
 	public DataSource getDataSrouce(){
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
@@ -51,10 +35,5 @@ public class PizzeriaAppSpringConfig {
 		return db; 
 	}
 		
-	@Bean 
-	public Scanner sc() {
-		Scanner sc = new Scanner(System.in); 
-		return sc; 
-	}
-		
+	
 }

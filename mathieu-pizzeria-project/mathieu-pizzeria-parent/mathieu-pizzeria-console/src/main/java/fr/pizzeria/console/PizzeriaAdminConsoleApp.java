@@ -30,7 +30,7 @@ public class PizzeriaAdminConsoleApp {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String daoImpl = bundle.getString("dao.impl");
-
+		System.out.println(daoImpl);
 //		PizzaDaoFactory daoFactory = null;
 //		try {
 //			daoFactory = (PizzaDaoFactory) Class.forName(daoImpl).newInstance();

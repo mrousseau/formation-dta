@@ -6,10 +6,10 @@
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-	<bean id="IhmUtil" class="fr.pizzeria.ihm.IhmUtil">
+<!-- 	<bean id="IhmUtil" class="fr.pizzeria.ihm.IhmUtil">
 		<constructor-arg ref="Scanner" ></constructor-arg>
 		<constructor-arg ref="PizzaFactoryJPA"/>
-	</bean>
+	</bean> -->
 	
 	<bean id="Menu" class="fr.pizzeria.ihm.Menu">
 		<constructor-arg ref="IhmUtil"/>
