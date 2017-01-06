@@ -26,7 +26,7 @@ public class PizzaDaoSrpingConfig {
 //	}
 //	
 	@Bean 
-	public DataSource getDataSrouce(){
+	public DataSource getDataSource(){
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		EmbeddedDatabase db = builder
 		.setType(EmbeddedDatabaseType.H2)
