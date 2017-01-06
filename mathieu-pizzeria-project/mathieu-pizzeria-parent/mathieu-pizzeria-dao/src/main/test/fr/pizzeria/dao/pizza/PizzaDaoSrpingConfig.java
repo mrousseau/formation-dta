@@ -9,9 +9,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
-@Configuration
-@ComponentScan("fr.pizzeria.dao")
+//@Configuration
+//@ComponentScan("fr.pizzeria.dao")
 public class PizzaDaoSrpingConfig {
 	
 	
@@ -25,15 +26,15 @@ public class PizzaDaoSrpingConfig {
 //		return dataSource; 
 //	}
 //	
-	@Bean 
-	public DataSource getDataSource(){
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder
-		.setType(EmbeddedDatabaseType.H2)
-		.addScript("pizzeriacodefirst.sql")
-		.build();
-		return db; 
-	}
-		
-	
+//	@Bean 
+//	public DataSource getDataSource(){
+//		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+//		EmbeddedDatabase db = builder
+//		.setType(EmbeddedDatabaseType.H2)
+//		.addScript("pizzeriacodefirst.sql")
+//		.build();
+//		return db; 
+//	}
+
+
 }

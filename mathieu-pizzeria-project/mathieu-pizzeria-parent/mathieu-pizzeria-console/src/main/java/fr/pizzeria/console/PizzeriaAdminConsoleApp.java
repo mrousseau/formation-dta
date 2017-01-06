@@ -31,28 +31,8 @@ public class PizzeriaAdminConsoleApp {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String daoImpl = bundle.getString("dao.impl");
 		System.out.println(daoImpl);
-//		PizzaDaoFactory daoFactory = null;
-//		try {
-//			daoFactory = (PizzaDaoFactory) Class.forName(daoImpl).newInstance();
-//		} catch (InstantiationException e) {
-//			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
-//		
-//		} catch (IllegalAccessException e) {
-//			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
-//		} catch (ClassNotFoundException e) {
-//			logger.log(Level.WARNING, "Erreur : " + e.getMessage(), e) ;
-//		}
-//
-//		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory);
-//		Menu menu = new Menu(ihmUtil);
-//		menu.start();
-		
-//		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(daoImpl, "application-config.xml")) {
-//			context.getBean(Menu.class).start();
-//			}
-		
+
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PizzeriaAppSpringConfig.class)) {
-//			PizzaFactoryBDD service = context.getBean(PizzaFactoryJPA.class);
 			context.getBean(Menu.class).start();
 		}
 		

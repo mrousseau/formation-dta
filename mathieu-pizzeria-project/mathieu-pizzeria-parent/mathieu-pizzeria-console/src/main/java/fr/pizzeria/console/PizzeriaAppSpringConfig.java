@@ -1,23 +1,22 @@
 package fr.pizzeria.console;
 
 import java.util.Scanner;
-
-import javax.sql.DataSource;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /*
  * Produit un bean de configuration
  * puis definit le répertoire qu'il doit scanner 
  * */
+
 @Configuration
 @ComponentScan("fr.pizzeria")
+@EnableTransactionManagement
 public class PizzeriaAppSpringConfig {
 	
 	
@@ -41,20 +40,34 @@ public class PizzeriaAppSpringConfig {
 //	}
 //	
 	
-	@Bean 
-	public DataSource getDataSource(){
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder
-		.setType(EmbeddedDatabaseType.H2)
-		.addScript("pizzeriacodefirst.sql")
-		.build();
-		return db; 
-	}
+//	@Bean 
+//	public DataSource getDataSource(){
+//		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+//		EmbeddedDatabase db = builder
+//		.setType(EmbeddedDatabaseType.H2)
+//		.addScript("pizzeriacodefirst.sql")
+//		.build();
+//		return db; 
+//	}
 		
 	@Bean 
 	public Scanner sc() {
 		Scanner sc = new Scanner(System.in); 
 		return sc; 
 	}
+	
+    @Bean
+    public LocalEntityManagerFactoryBean EntityManager() {
+        LocalEntityManagerFactoryBean entity = new LocalEntityManagerFactoryBean();
+        entity.setPersistenceUnitName("manager1");
+        return entity;
+    }
+    
+    @Bean    
+    public PlatformTransactionManager TransactionManager() {        
+    	return new JpaTransactionManager();    
+	}
+    
+    
 		
 }
