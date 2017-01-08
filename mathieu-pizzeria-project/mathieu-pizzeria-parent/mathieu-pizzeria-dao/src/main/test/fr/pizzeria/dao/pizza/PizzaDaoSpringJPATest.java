@@ -2,6 +2,11 @@ package fr.pizzeria.dao.pizza;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +21,21 @@ import fr.pizzeria.model.Pizza;
 @ContextConfiguration(classes = PizzaDaoSpringJPAConfig.class)
 public class PizzaDaoSpringJPATest {
 
+	
 	@Autowired @Qualifier("pizzaDaoSpringJPA") PizzaDao pizzaDaoSpring;
 	
+	
+	
+	@BeforeClass
+	public static void injectionPizza(){
+		List<Pizza> l = new ArrayList<Pizza>();
+		l.add(new Pizza("PEP", "Peperoni", 15.54, CategoriePizza.VIANDE, "www.google.fr"));
+		l.add(new Pizza("ORI", "Oriental", 25.54, CategoriePizza.VIANDE, "www.j&m.fr"));	
+		for(Pizza item : l){
+			pizzaDaoSpring.save(item);	
+		}
+		
+	}
 	
 	@Test
 	public void testList() {

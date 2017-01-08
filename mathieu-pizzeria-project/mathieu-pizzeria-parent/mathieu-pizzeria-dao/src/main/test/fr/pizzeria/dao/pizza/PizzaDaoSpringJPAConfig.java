@@ -17,7 +17,7 @@ public class PizzaDaoSpringJPAConfig {
     @Bean
     public LocalEntityManagerFactoryBean EntityManager() {
         LocalEntityManagerFactoryBean entity = new LocalEntityManagerFactoryBean();
-        entity.setPersistenceUnitName("manager1");
+        entity.setPersistenceUnitName("mathieu-h2");
         return entity;
     }
     
