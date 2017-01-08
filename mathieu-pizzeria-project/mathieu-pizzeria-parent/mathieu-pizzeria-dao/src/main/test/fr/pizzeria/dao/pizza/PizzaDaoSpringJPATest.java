@@ -26,16 +26,16 @@ public class PizzaDaoSpringJPATest {
 	
 	
 	
-	@BeforeClass
-	public static void injectionPizza(){
-		List<Pizza> l = new ArrayList<Pizza>();
-		l.add(new Pizza("PEP", "Peperoni", 15.54, CategoriePizza.VIANDE, "www.google.fr"));
-		l.add(new Pizza("ORI", "Oriental", 25.54, CategoriePizza.VIANDE, "www.j&m.fr"));	
-		for(Pizza item : l){
-			pizzaDaoSpring.save(item);	
-		}
-		
-	}
+//	@BeforeClass
+//	public static void injectionPizza(){
+//		List<Pizza> l = new ArrayList<Pizza>();
+//		l.add(new Pizza("PEP", "Peperoni", 15.54, CategoriePizza.VIANDE, "www.google.fr"));
+//		l.add(new Pizza("ORI", "Oriental", 25.54, CategoriePizza.VIANDE, "www.j&m.fr"));	
+//		for(Pizza item : l){
+//			pizzaDaoSpring.save(item);	
+//		}
+//		
+//	}
 	
 	@Test
 	public void testList() {
