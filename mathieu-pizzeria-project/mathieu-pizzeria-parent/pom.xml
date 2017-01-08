@@ -135,5 +135,11 @@
 				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryJPA</factoryValue.mode>
 			</properties>
 		</profile>
+		<profile>
+			<id>dataJpa</id>
+			<properties>
+				<factoryValue.mode>fr.pizzeria.dao.service.PizzaFactoryDataJpa</factoryValue.mode>
+			</properties>
+		</profile>
 	</profiles>
 </project>
