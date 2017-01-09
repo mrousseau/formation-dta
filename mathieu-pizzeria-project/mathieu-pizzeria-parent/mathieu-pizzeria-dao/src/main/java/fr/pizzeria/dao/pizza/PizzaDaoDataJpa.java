@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import fr.pizzeria.model.Pizza;
+
 @Repository
-@Qualifier("enabled")
 public class PizzaDaoDataJpa implements PizzaDao {
 
 	@Autowired

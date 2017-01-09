@@ -2,10 +2,6 @@ package fr.pizzeria.dao.pizza;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +17,14 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoSpringJPATest {
 
 	
-	@Autowired @Qualifier("PizzaDaoDataJpa") PizzaDao pizzaDaoDataJpa;
-	static
-	{
-	    Logger rootLogger = Logger.getRootLogger();
-	    rootLogger.setLevel(Level.WARN);
-	    rootLogger.addAppender(new ConsoleAppender(
-	               new PatternLayout("%-6r [%p] %c - %m%n")));
-	}
+	@Autowired @Qualifier("pizzaDaoDataJpa") PizzaDao pizzaDaoDataJpa;
+//	static
+//	{
+//	    Logger rootLogger = Logger.getRootLogger();
+//	    rootLogger.setLevel(Level.WARN);
+//	    rootLogger.addAppender(new ConsoleAppender(
+//	               new PatternLayout("%-6r [%p] %c - %m%n")));
+//	}
 //	@BeforeClass
 //	public static void injectionPizza(){
 //		List<Pizza> l = new ArrayList<Pizza>();
@@ -41,11 +37,6 @@ public class PizzaDaoSpringJPATest {
 //	}
 	
 	@Test
-	public void testList() {
-		assertEquals(true, pizzaDaoDataJpa.findAll().size()!=0);
-	}
-	
-	@Test
 	public void testSave() { 
 		Pizza pi = new Pizza("TOT", "TOTOTOTO", 15.50 , CategoriePizza.VIANDE);
 		System.out.println(pi);
@@ -53,6 +44,13 @@ public class PizzaDaoSpringJPATest {
 		System.out.println("Liste des Pizzas -> nb : " + pizzaDaoDataJpa.findAll().size() );
 		pizzaDaoDataJpa.findAll().forEach(System.out::println);
 		assertEquals(true, pizzaDaoDataJpa.findAll().stream().filter(p -> p.getCode().equals("TOT")).findFirst().get().getCode().equals("TOT"));
+	}
+	
+	
+	@Test
+	public void testList() {
+		pizzaDaoDataJpa.findAll().forEach(System.out::println);
+		assertEquals(true, pizzaDaoDataJpa.findAll().size()!=0);
 	}
 	
 	@Test

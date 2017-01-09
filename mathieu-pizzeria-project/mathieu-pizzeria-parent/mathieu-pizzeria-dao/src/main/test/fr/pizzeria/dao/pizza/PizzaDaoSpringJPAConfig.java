@@ -13,6 +13,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -33,36 +35,43 @@ public class PizzaDaoSpringJPAConfig {
 	 * JpaTransactionManager(); }
 	 */
 
-	@Bean 
-	public DataSource dataSource(){
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder
-		.setType(EmbeddedDatabaseType.H2)
-		.addScript("pizzeriacodefirst.sql")
-		.build();
-		return db; 
-	}
-
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(entityManagerFactory());
-		return txManager;
-	}
-
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("fr.pizzeria");
-		factory.setDataSource(dataSource());
-		factory.afterPropertiesSet();
-		return factory.getObject();
-	}
+//	@Bean 
+//	public DataSource dataSource(){
+//		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+//		EmbeddedDatabase db = builder
+//		.setType(EmbeddedDatabaseType.H2)
+//		.addScript("pizzeriacodefirst.sql")
+//		.build();
+//		return db; 
+//	}
+//
+//	@Bean
+//	public PlatformTransactionManager transactionManager() {
+//		JpaTransactionManager txManager = new JpaTransactionManager();
+//		txManager.setEntityManagerFactory(entityManagerFactory());
+//		return txManager;
+//	}
+//
+//	@Bean public EntityManagerFactory entityManagerFactory() { 
+//		return new JpaTransactionManager().getEntityManagerFactory(); 
+//		}
 	
-	
+	@Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager();
+    }
+
+    @Bean
+    public PersistenceAnnotationBeanPostProcessor beanPostProcessor() {
+        return new PersistenceAnnotationBeanPostProcessor();
+    }
+
+    @Bean
+    public LocalEntityManagerFactoryBean entityManagerFactory() {
+        LocalEntityManagerFactoryBean entityManagerFactoryBean = new LocalEntityManagerFactoryBean();
+        entityManagerFactoryBean.setPersistenceUnitName("mathieu-h2");
+        return entityManagerFactoryBean;
+    }
 	
 	
 	

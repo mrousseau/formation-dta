@@ -14,5 +14,5 @@ import fr.pizzeria.model.Pizza;
  * @author mathieu
  *
  */
-public interface IPizzaRepository  extends JpaRepository<Pizza, Long>  {
+public interface IPizzaRepository  extends JpaRepository<Pizza, Integer>  {
 }
