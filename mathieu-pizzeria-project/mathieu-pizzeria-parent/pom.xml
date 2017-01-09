@@ -14,6 +14,7 @@
 		<module>mathieu-pizzeria-console</module>
 		<module>mathieu-pizzeria-console-client</module>
 		<module>mathieu-pizzeria-web</module>
+		<module>mathieu-pizzeria-stock-app</module>
 	</modules>
 
 	<build>
