@@ -4,8 +4,10 @@ import java.util.Scanner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan("fr.pizzeria")
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class PizzeriaAppSpringConfig {
 	
 	
@@ -50,24 +53,40 @@ public class PizzeriaAppSpringConfig {
 //		return db; 
 //	}
 		
-	@Bean 
-	public Scanner sc() {
-		Scanner sc = new Scanner(System.in); 
-		return sc; 
-	}
-	
-    @Bean
-    public LocalEntityManagerFactoryBean EntityManager() {
-        LocalEntityManagerFactoryBean entity = new LocalEntityManagerFactoryBean();
-        entity.setPersistenceUnitName("mathieu-h2");
-        return entity;
+//	@Bean 
+//	public Scanner sc() {
+//		Scanner sc = new Scanner(System.in); 
+//		return sc; 
+//	}
+//	
+//    @Bean
+//    public LocalEntityManagerFactoryBean EntityManager() {
+//        LocalEntityManagerFactoryBean entity = new LocalEntityManagerFactoryBean();
+//        entity.setPersistenceUnitName("mathieu-h2");
+//        return entity;
+//    }
+//    
+//    @Bean    
+//    public PlatformTransactionManager TransactionManager() {        
+//    	return new JpaTransactionManager();    
+//	}
+
+	@Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager();
     }
-    
-    @Bean    
-    public PlatformTransactionManager TransactionManager() {        
-    	return new JpaTransactionManager();    
-	}
-    
+
+    @Bean
+    public PersistenceAnnotationBeanPostProcessor beanPostProcessor() {
+        return new PersistenceAnnotationBeanPostProcessor();
+    }
+
+    @Bean
+    public LocalEntityManagerFactoryBean entityManagerFactory() {
+        LocalEntityManagerFactoryBean entityManagerFactoryBean = new LocalEntityManagerFactoryBean();
+        entityManagerFactoryBean.setPersistenceUnitName("mathieu-h2");
+        return entityManagerFactoryBean;
+    }
     
 		
 }
