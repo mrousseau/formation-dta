@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Les pizzas</title>
+<script src="webjars/jquery/1.11.1/jquery.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css"> 
+
+</head>
+<body class="container">
+
+	<p>liste de pizzas</p>
+	<table class="table table-bordered tableau_pizza">
+		<thead>
+			<tr>
+				<th class="col-md-2 hidden">Id.</th>
+				<th class="col-md-2">Nom</th>
+				<th class="col-md-2">Prenom</th>
+				<th class="col-md-2">Adresse</th>
+				<th class="col-md-2">Téléphone</th>
+				<th class="col-md-2">Date de naissance</th>
+			</tr>
+		</thead>
+		<tbody id="row" style="background-color: gray; ">
+		</tbody>
+
+
+
+<script>
+(function() {
+	var flickerAPI = "http://localhost:8080/api/pizzas";
+	$.getJSON(flickerAPI, {
+		format : "json"
+	}).done(function(data) {
+		console.log(data);
+		$.each(data, function(i, item) {
+			 $("#row").append('<tr>').append('<td>'+ item.id +'</td>').append('<td>'+ item.nom +'</td>').append('<td>'+ item.prenom +'</td>').append('<td>'+ item.telephone +'</td>').append('<td>'+ new Date(item.dateNaissance*1000).getDay() + new Date(item.dateNaissance).getDate() +' ' + new Date(item.dateNaissance).getMonth() + ' ' + new Date(item.dateNaissance).getFullYear() + ' ' +  +'</td>').append('</tr>');
+		});
+	});
+})();
+</script>
+
+</body>
+</html>
