@@ -1,6 +1,8 @@
 # formation-dta 
-- @author : Mathieu ROUSSEAU
-- @email  : mr.rousseaumathieu@gmail.com
+
+@author : Mathieu ROUSSEAU
+
+@email  : mr.rousseaumathieu@gmail.com
 
 ## Description
 
