@@ -6,9 +6,9 @@
 
 ## Description
 
- Analyse,design and developement of an application with goal to manage a pizzeria.
+ Analyse,design and developement of an application to manage a pizzeria.
  
  Use : 
 *  Concepts : Table, Structur, POO, collection, enum
-*  Tools    : Servlet, jsp, filter, listener, WebServlet 3.0, CDI, EJB, Jax-RS
-*  Spring   : Beans, JDBC, JPA, DATA-JPA, AOP, Web-MVC, Security, Spring-Boot
+*  Tools    : Servlet, jsp, filter, listener, WebServlet 3.0, CDI, EJB, Jax-RS, Spring
+*  Spring   : Beans, JDBC, JPA, DATA-JPA, AOP, Web-MVC, Spring-Boot
